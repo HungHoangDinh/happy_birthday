@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday My Love 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #ffe6f7 0, #ffd8f0 30%, #ffb3d9 65%, #ff8fbf 100%);
+      color: #3a0033;
+      overflow: hidden;
+    }
+
+    .scene {
+      position: relative;
+      width: min(900px, 100%);
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      position: relative;
+      width: min(720px, 100%);
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 28px;
+      box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(255, 255, 255, 0.4);
+      padding: 40px 32px 36px;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      animation: floatCard 4s ease-in-out infinite;
+    }
+
+    @keyframes floatCard {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-8px) scale(1.01);
+      }
+    }
+
+    /* Dải sáng phía sau */
+    .glow {
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255, 255, 255, 0.65) 0, transparent 50%),
+        radial-gradient(circle at 100% 0%, rgba(255, 196, 230, 0.7) 0, transparent 55%),
+        radial-gradient(circle at 0% 100%, rgba(255, 180, 225, 0.6) 0, transparent 55%);
+      opacity: 0.65;
+      z-index: -1;
+      filter: blur(4px);
+    }
+
+    .top-decoration {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .heart-ring {
+      position: absolute;
+      top: -80px;
+      right: -40px;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      border: 2px dashed rgba(255, 130, 180, 0.55);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: spin 18s linear infinite;
+    }
+
+    .heart-ring::before {
+      content: "💗";
+      font-size: 42px;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+    }
+
+    .heart-floating {
+      position: absolute;
+      left: -10px;
+      top: 30px;
+      font-size: 34px;
+      animation: floatUp 4.8s ease-in-out infinite;
+    }
+
+    .heart-floating:nth-child(2) {
+      left: 40px;
+      top: 85px;
+      font-size: 26px;
+      animation-delay: 0.8s;
+    }
+
+    .heart-floating:nth-child(3) {
+      left: 90px;
+      top: 10px;
+      font-size: 28px;
+      animation-delay: 1.4s;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes floatUp {
+      0%, 100% {
+        transform: translateY(0);
+        opacity: 0.9;
+      }
+      50% {
+        transform: translateY(-18px);
+        opacity: 1;
+      }
+    }
+
+    .tagline {
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 10px;
+      color: #c34a7e;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.1;
+      margin-bottom: 10px;
+      font-weight: 800;
+      background: linear-gradient(120deg, #ff1770 0%, #ff5ca8 45%, #ff9fce 75%, #ffe6f5 100%);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #8a3263;
+      margin-bottom: 26px;
+    }
+
+    .divider {
+      width: 64px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ff1770, #ff9fce);
+      margin-bottom: 26px;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .message {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #5a003e;
+    }
+
+    .message-line {
+      display: block;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .message-line.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .highlight {
+      font-weight: 600;
+      color: #ff1770;
+    }
+
+    .signature {
+      margin-top: 18px;
+      font-size: 14px;
+      color: #8f396a;
+      text-align: right;
+      font-style: italic;
+    }
+
+    .right {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .circle-photo {
+      position: relative;
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 0, #ffe2f5 0, #ff8fc1 40%, #ff1770 80%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.35),
+        0 0 0 10px rgba(255, 255, 255, 0.9);
+      overflow: hidden;
+    }
+
+    /* Vùng đặt ảnh bạn gái (có thể thay bằng <img>) */
+    .circle-photo-inner {
+      width: 80%;
+      height: 80%;
+      border-radius: 50%;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-image: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.18),
+          rgba(255, 255, 255, 0.2)
+        ),
+        url("image.png");
+      /* Đổi URL trên thành ảnh bạn gái của bạn */
+      filter: saturate(1.1) contrast(1.05);
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -16px;
+      right: -4px;
+      background: #ffffff;
+      color: #ff1770;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    .bubble::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: -6px;
+      width: 10px;
+      height: 10px;
+      background: #ffffff;
+      transform: rotate(45deg);
+    }
+
+    .bottom-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 24px;
+      font-size: 12px;
+      color: #b44f83;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .date-tag {
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(255, 240, 250, 0.95);
+      border: 1px solid rgba(255, 149, 199, 0.8);
+      font-weight: 600;
+    }
+
+    .small-note {
+      opacity: 0.9;
+    }
+
+    /* Confetti */
+    .confetti-piece {
+      position: fixed;
+      top: -10px;
+      width: 8px;
+      height: 14px;
+      border-radius: 3px;
+      opacity: 0.9;
+      animation: confetti-fall 6s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translate3d(0, 0, 0) rotateZ(0);
+      }
+      100% {
+        transform: translate3d(40px, 110vh, 0) rotateZ(360deg);
+      }
+    }
+
+    /* Nút phát nhạc */
+    .music-toggle {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      background: radial-gradient(circle at 30% 0, #ffe3f6 0, #ff5ca8 40%, #ff1770 80%);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 22px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+    }
+
+    .music-toggle:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+      filter: brightness(1.05);
+    }
+
+    .music-toggle.playing {
+      animation: spin 4.5s linear infinite;
+    }
+
+    /* Responsive */
+    @media (max-width: 680px) {
+      .card {
+        padding: 26px 18px 26px;
+        border-radius: 22px;
+      }
+
+      .content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .right {
+        order: -1;
+      }
+
+      .circle-photo {
+        width: 190px;
+        height: 190px;
+      }
+
+      .bottom-info {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .heart-ring {
+        width: 180px;
+        height: 180px;
+        top: -70px;
+        right: -30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="card">
+      <div class="glow"></div>
+
+      <div class="top-decoration">
+        <div class="heart-ring"></div>
+        <div class="heart-floating">💖</div>
+        <div class="heart-floating">💘</div>
+        <div class="heart-floating">💝</div>
+      </div>
+
+      <div class="tagline">TO THE MOST BEAUTIFUL GIRL IN MY WORLD</div>
+      <div class="title">Happy Birthday, My Love ✨</div>
+      <div class="subtitle">
+        Chúc mừng sinh nhật thiên thần bé nhỏ của anh.
+      </div>
+      <div class="divider"></div>
+
+      <div class="content">
+        <div class="left">
+          <div class="message">
+            <span class="message-line">
+              Hôm nay là một ngày thật đặc biệt, ngày mà một <span class="highlight">thiên thần xinh đẹp</span>
+              xuất hiện trên thế giới này – và rồi bước vào cuộc đời anh.
+            </span>
+            <span class="message-line">
+              Cảm ơn em vì đã luôn dịu dàng, ấm áp và ở bên anh dù là những lúc vui nhất hay mệt mỏi nhất.
+            </span>
+            <span class="message-line">
+              Anh chúc em luôn cười thật tươi, vì nụ cười của em là điều đẹp nhất anh biết.
+            </span>
+            <span class="message-line">
+              Anh chúc em luôn được bao bọc bởi bình yên, hạnh phúc và những điều dễ thương nhất.
+            </span>
+            <span class="message-line">
+              Anh chúc mọi ước mơ nhỏ bé hay to lớn của em đều lần lượt trở thành hiện thực.
+            </span>
+            <span class="message-line">
+              Dù sau này có ra sao, anh vẫn muốn đi cùng em thật lâu, nắm tay em qua những mùa sinh nhật sắp tới.
+            </span>
+          </div>
+          <div class="signature">
+            — Thương em rất nhiều,  
+            <span class="highlight">from: Hổ Béo</span>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="circle-photo">
+            <div class="circle-photo-inner"></div>
+            <div class="bubble">My pretty girl 💕</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-info">
+        <div class="date-tag">
+          🎂 Sinh nhật em • <span id="birthday-date">Love you</span>
+        </div>
+        <div class="small-note">
+"Hãy mãi là cô công chúa nhỏ của anh nhé”
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nhạc nền (thay link nếu muốn) -->
+  <audio id="bg-music" loop>
+    <!-- Dùng file nhạc Happy Birthday lưu cùng thư mục với trang -->
+    <source src="Happy Birthday Song.mp3" type="audio/mpeg" />
+  </audio>
+
+  <button class="music-toggle" id="music-btn" title="Bật / tắt nhạc">
+    ♫
+  </button>
+
+  <script>
+    // Tạo confetti
+    const colors = ["#ff1770", "#ff9fce", "#ffd6f3", "#fff5fb", "#ff6fa5"];
+    const numConfetti = 60;
+
+    for (let i = 0; i < numConfetti; i++) {
+      const piece = document.createElement("div");
+      piece.className = "confetti-piece";
+      const size = Math.random() * 6 + 6;
+      piece.style.width = size + "px";
+      piece.style.height = (size * 1.6) + "px";
+      piece.style.left = Math.random() * 100 + "vw";
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.animationDelay = Math.random() * 6 + "s";
+      piece.style.animationDuration = 4 + Math.random() * 4 + "s";
+      piece.style.opacity = 0.6 + Math.random() * 0.4;
+      document.body.appendChild(piece);
+    }
+
+    // Nút bật/tắt nhạc
+    const music = document.getElementById("bg-music");
+    const btn = document.getElementById("music-btn");
+    let isPlaying = false;
+
+    btn.addEventListener("click", async () => {
+      try {
+        if (!isPlaying) {
+          await music.play();
+          isPlaying = true;
+          btn.classList.add("playing");
+          btn.textContent = "♪";
+        } else {
+          music.pause();
+          isPlaying = false;
+          btn.classList.remove("playing");
+          btn.textContent = "♫";
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    });
+
+    // Hiệu ứng chữ: hiện lần lượt từng dòng, xong thì xóa và lặp lại
+    const lines = document.querySelectorAll(".message-line");
+    const timeBetweenLines = 1200; // ms – thời gian giữa mỗi dòng
+    const timeAfterAllShown = 2000; // ms – chờ sau khi hiện hết rồi mới xóa
+
+    function startMessageLoop() {
+      // Ẩn toàn bộ dòng trước khi bắt đầu lượt mới
+      lines.forEach((line) => line.classList.remove("visible"));
+
+      let index = 0;
+      const intervalId = setInterval(() => {
+        if (index < lines.length) {
+          lines[index].classList.add("visible");
+          index++;
+        } else {
+          clearInterval(intervalId);
+          // Chờ 1 lúc cho người đọc, sau đó xóa và chạy lại
+          setTimeout(startMessageLoop, timeAfterAllShown);
+        }
+      }, timeBetweenLines);
+    }
+
+    // Bắt đầu vòng lặp khi trang load xong
+    window.addEventListener("load", startMessageLoop);
+  </script>
+</body>
+</html>
