@@ -295,6 +295,149 @@
       gap: 8px;
     }
 
+    /* Page switching */
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .page-arrows {
+      position: absolute;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 5; /* đảm bảo luôn nổi phía trên nội dung */
+    }
+
+    .page-arrow-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 120, 180, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(6px);
+      color: #ff1770;
+      cursor: pointer;
+      font-size: 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease,
+        border-color 0.18s ease;
+    }
+
+    .page-arrow-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.26);
+      background: rgba(255, 255, 255, 0.9);
+      border-color: #ff1770;
+    }
+
+    /* Page 2 – câu hỏi yêu anh không */
+    .page-2 {
+      position: relative;
+    }
+
+    .page-2-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+      padding: 16px 6px 4px;
+    }
+
+    .love-question {
+      font-size: 20px;
+      font-weight: 700;
+      color: #b00052;
+    }
+
+    .love-sub {
+      font-size: 14px;
+      color: #7c2551;
+      max-width: 360px;
+    }
+
+    .love-buttons-wrap {
+      position: relative;
+      width: 260px;
+      height: 120px;
+      margin-top: 4px;
+    }
+
+    .love-btn {
+      position: absolute;
+      min-width: 90px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .love-btn-yes {
+      left: 20px;
+      top: 40px;
+      background: linear-gradient(120deg, #ff1770, #ff5ca8);
+      color: #ffffff;
+      box-shadow: 0 6px 16px rgba(255, 23, 112, 0.5);
+    }
+
+    .love-btn-yes:hover {
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    .love-btn-no {
+      right: 20px;
+      top: 40px;
+      background: #ffffff;
+      color: #b00052;
+      border: 1px solid rgba(255, 120, 180, 0.7);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 9999 !important; /* Luôn nổi trên tất cả */
+      position: absolute !important; /* Đảm bảo position */
+      display: block !important; /* Luôn hiển thị */
+      visibility: visible !important; /* Luôn thấy được */
+      opacity: 1 !important; /* Luôn trong suốt */
+      pointer-events: auto !important; /* Luôn có thể click */
+    }
+
+    /* Tim to khi bấm "Có" */
+    .big-heart {
+      font-size: 70px;
+      opacity: 0;
+      transform: scale(0.4) translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+    }
+
+    .big-heart.show {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      animation: pulseHeart 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulseHeart {
+      0%, 100% {
+        transform: scale(1) translateY(0);
+      }
+      50% {
+        transform: scale(1.15) translateY(-6px);
+      }
+    }
+
     .date-tag {
       padding: 5px 11px;
       border-radius: 999px;
@@ -405,57 +548,84 @@
         <div class="heart-floating">💝</div>
       </div>
 
-      <div class="tagline">TO THE MOST BEAUTIFUL GIRL IN MY WORLD</div>
-      <div class="title">Happy Birthday, My Love ✨</div>
-      <div class="subtitle">
-        Chúc mừng sinh nhật thiên thần bé nhỏ của anh.
+      <!-- PAGE 1: Thiệp chúc mừng -->
+      <div class="page page-1 active">
+        <div class="tagline">TO THE MOST BEAUTIFUL GIRL IN MY WORLD</div>
+        <div class="title">Happy Birthday, My Love ✨</div>
+        <div class="subtitle">
+          Chúc mừng sinh nhật thiên thần bé nhỏ của anh.
+        </div>
+        <div class="divider"></div>
+
+        <div class="content">
+          <div class="left">
+            <div class="message">
+              <span class="message-line">
+                Hôm nay là một ngày thật đặc biệt, ngày mà một <span class="highlight">thiên thần xinh đẹp</span>
+                xuất hiện trên thế giới này – và rồi bước vào cuộc đời anh.
+              </span>
+              <span class="message-line">
+                Cảm ơn em vì đã luôn dịu dàng, ấm áp và ở bên anh dù là những lúc vui nhất hay mệt mỏi nhất.
+              </span>
+              <span class="message-line">
+                Anh chúc em luôn cười thật tươi, vì nụ cười của em là điều đẹp nhất anh biết.
+              </span>
+              <span class="message-line">
+                Anh chúc em luôn được bao bọc bởi bình yên, hạnh phúc và những điều dễ thương nhất.
+              </span>
+              <span class="message-line">
+                Anh chúc mọi ước mơ nhỏ bé hay to lớn của em đều lần lượt trở thành hiện thực.
+              </span>
+              <span class="message-line">
+                Dù sau này có ra sao, anh vẫn muốn đi cùng em thật lâu, nắm tay em qua những mùa sinh nhật sắp tới.
+              </span>
+            </div>
+            <div class="signature">
+              — Thương em rất nhiều,  
+              <span class="highlight">from: Hổ Béo</span>
+            </div>
+          </div>
+
+          <div class="right">
+            <div class="circle-photo">
+              <div class="circle-photo-inner"></div>
+              <div class="bubble">My pretty girl 💕</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-info">
+          <div class="date-tag">
+            🎂 Sinh nhật em • <span id="birthday-date">Love you</span>
+          </div>
+          <div class="small-note">
+            "Hãy mãi là cô công chúa nhỏ của anh nhé”
+          </div>
+        </div>
       </div>
-      <div class="divider"></div>
 
-      <div class="content">
-        <div class="left">
-          <div class="message">
-            <span class="message-line">
-              Hôm nay là một ngày thật đặc biệt, ngày mà một <span class="highlight">thiên thần xinh đẹp</span>
-              xuất hiện trên thế giới này – và rồi bước vào cuộc đời anh.
-            </span>
-            <span class="message-line">
-              Cảm ơn em vì đã luôn dịu dàng, ấm áp và ở bên anh dù là những lúc vui nhất hay mệt mỏi nhất.
-            </span>
-            <span class="message-line">
-              Anh chúc em luôn cười thật tươi, vì nụ cười của em là điều đẹp nhất anh biết.
-            </span>
-            <span class="message-line">
-              Anh chúc em luôn được bao bọc bởi bình yên, hạnh phúc và những điều dễ thương nhất.
-            </span>
-            <span class="message-line">
-              Anh chúc mọi ước mơ nhỏ bé hay to lớn của em đều lần lượt trở thành hiện thực.
-            </span>
-            <span class="message-line">
-              Dù sau này có ra sao, anh vẫn muốn đi cùng em thật lâu, nắm tay em qua những mùa sinh nhật sắp tới.
-            </span>
+      <!-- PAGE 2: Câu hỏi yêu anh không -->
+      <div class="page page-2">
+        <div class="page-2-content">
+          <div class="love-question">
+            Em có yêu Hổ Béo không? 💌
           </div>
-          <div class="signature">
-            — Thương em rất nhiều,  
-            <span class="highlight">from: Hổ Béo</span>
+          <div class="love-sub">
+            Trả lời thật lòng nha, anh đang chờ câu trả lời của cô công chúa nhỏ nè.  
           </div>
-        </div>
 
-        <div class="right">
-          <div class="circle-photo">
-            <div class="circle-photo-inner"></div>
-            <div class="bubble">My pretty girl 💕</div>
+          <div class="love-buttons-wrap" id="love-area">
+            <button class="love-btn love-btn-yes" id="btn-yes">Có, yêu nhiều lắm 💖</button>
+            <button class="love-btn love-btn-no" id="btn-no">Không đâu 😏</button>
           </div>
+
+          <div class="big-heart" id="big-heart">💘</div>
         </div>
       </div>
 
-      <div class="bottom-info">
-        <div class="date-tag">
-          🎂 Sinh nhật em • <span id="birthday-date">Love you</span>
-        </div>
-        <div class="small-note">
-"Hãy mãi là cô công chúa nhỏ của anh nhé”
-        </div>
+      <!-- Nút mũi tên hai chiều chuyển page -->
+      <div class="page-arrows">
+        <button class="page-arrow-btn" id="arrow-toggle" title="Đổi trang">⇄</button>
       </div>
     </div>
   </div>
@@ -536,6 +706,215 @@
 
     // Bắt đầu vòng lặp khi trang load xong
     window.addEventListener("load", startMessageLoop);
+
+    // Chuyển trang giữa page 1 và 2
+    const pages = document.querySelectorAll(".page");
+    const arrowToggle = document.getElementById("arrow-toggle");
+    let currentPage = 0; // 0: page 1, 1: page 2
+
+    // Hàm reset game về trạng thái ban đầu
+    function resetGame() {
+      // Reset nút "Không" về vị trí ban đầu trong love-buttons-wrap - LUÔN NỔI TRÊN TẤT CẢ
+      if (btnNo) {
+        btnNo.style.position = "absolute";
+        btnNo.style.left = "";
+        btnNo.style.top = "";
+        btnNo.style.right = "20px"; // Về vị trí ban đầu theo CSS
+        btnNo.style.bottom = "";
+        btnNo.style.zIndex = "99999"; // Luôn nổi trên cùng
+        btnNo.style.display = "block";
+        btnNo.style.visibility = "visible";
+        btnNo.style.opacity = "1";
+        btnNo.style.pointerEvents = "auto";
+      }
+      // Ẩn quả tim to nếu đã hiện
+      if (bigHeart) {
+        bigHeart.classList.remove("show");
+      }
+    }
+
+    function showPage(index) {
+      const newPage = (index + pages.length) % pages.length;
+      
+      // Nếu chuyển sang page 2, reset game
+      if (newPage === 1) {
+        resetGame();
+      }
+      
+      currentPage = newPage;
+      pages.forEach((p, i) => {
+        p.classList.toggle("active", i === currentPage);
+      });
+    }
+
+    if (arrowToggle) {
+      arrowToggle.addEventListener("click", () => {
+        showPage(currentPage + 1);
+      });
+    }
+
+    // Page 2: xử lý nút "Có" và "Không"
+    const btnYes = document.getElementById("btn-yes");
+    const btnNo = document.getElementById("btn-no");
+    const loveArea = document.getElementById("love-area");
+    const bigHeart = document.getElementById("big-heart");
+
+    if (btnYes && bigHeart) {
+      btnYes.addEventListener("click", () => {
+        bigHeart.classList.add("show");
+      });
+    }
+
+    // Hàm random vị trí cho nút "Không" trong phạm vi thiệp (page-2)
+    function moveNoButton(e) {
+      if (!btnNo || !loveArea) return;
+      
+      // Ngăn hành vi mặc định (như submit form nếu có)
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      // Tìm container là .page-2-content (đã có position: relative)
+      const container = document.querySelector(".page-2-content");
+      if (!container) {
+        // Nếu không tìm thấy container, đảm bảo nút vẫn hiển thị
+        btnNo.style.display = "block";
+        btnNo.style.visibility = "visible";
+        btnNo.style.opacity = "1";
+        return;
+      }
+
+      // Đảm bảo nút luôn hiển thị TRƯỚC KHI tính toán - LUÔN NỔI TRÊN TẤT CẢ
+      btnNo.style.display = "block";
+      btnNo.style.visibility = "visible";
+      btnNo.style.opacity = "1";
+      btnNo.style.position = "absolute";
+      btnNo.style.zIndex = "99999"; // Z-index cực cao để luôn trên cùng
+      btnNo.style.pointerEvents = "auto";
+
+      const btnRect = btnNo.getBoundingClientRect();
+      const yesRect = btnYes ? btnYes.getBoundingClientRect() : null;
+      const containerRect = container.getBoundingClientRect();
+
+      const padding = 10;
+      const btnWidth = btnRect.width || 120; // Fallback nếu không đo được
+      const btnHeight = btnRect.height || 40; // Fallback nếu không đo được
+      
+      // Tính toán phạm vi di chuyển trong container
+      const containerWidth = containerRect.width || 500;
+      const containerHeight = containerRect.height || 400;
+      
+      // Đảm bảo giá trị hợp lệ
+      const maxLeft = Math.max(padding, Math.min(containerWidth - btnWidth - padding, containerWidth - padding));
+      const maxTop = Math.max(padding, Math.min(containerHeight - btnHeight - padding, containerHeight - padding));
+
+      // Đảm bảo có không gian để di chuyển
+      if (maxLeft < padding || maxTop < padding || maxLeft <= padding || maxTop <= padding) {
+        // Nếu không đủ không gian, đặt ở vị trí an toàn
+        btnNo.style.left = Math.max(padding, Math.min(containerWidth - btnWidth - padding, containerWidth / 2)) + "px";
+        btnNo.style.top = Math.max(padding, Math.min(containerHeight - btnHeight - padding, containerHeight / 2)) + "px";
+        btnNo.style.right = "";
+        btnNo.style.bottom = "";
+        return;
+      }
+
+      let tries = 0;
+      let foundPosition = false;
+      let bestPosition = { left: padding, top: padding }; // Vị trí mặc định an toàn
+      
+      while (tries < 100) {
+        // Random vị trí trong phạm vi container, đảm bảo giá trị hợp lệ
+        const newLeft = Math.max(padding, Math.min(padding + Math.random() * (maxLeft - padding), maxLeft));
+        const newTop = Math.max(padding, Math.min(padding + Math.random() * (maxTop - padding), maxTop));
+
+        // Đảm bảo giá trị không âm và hợp lệ
+        if (isNaN(newLeft) || isNaN(newTop) || newLeft < 0 || newTop < 0) {
+          tries++;
+          continue;
+        }
+
+        // Tính toán vị trí tuyệt đối trên màn hình để kiểm tra va chạm với nút Có
+        const absoluteLeft = containerRect.left + newLeft;
+        const absoluteTop = containerRect.top + newTop;
+
+        // Kiểm tra không đè lên nút Có
+        let overlapsYes = false;
+        if (yesRect) {
+          const futureRect = {
+            left: absoluteLeft,
+            right: absoluteLeft + btnWidth,
+            top: absoluteTop,
+            bottom: absoluteTop + btnHeight,
+          };
+
+          const horizontalOverlap = futureRect.left < yesRect.right && futureRect.right > yesRect.left;
+          const verticalOverlap = futureRect.top < yesRect.bottom && futureRect.bottom > yesRect.top;
+          overlapsYes = horizontalOverlap && verticalOverlap;
+        }
+
+        if (!overlapsYes) {
+          // Đảm bảo giá trị hợp lệ trước khi gán
+          btnNo.style.left = Math.max(0, newLeft) + "px";
+          btnNo.style.top = Math.max(0, newTop) + "px";
+          btnNo.style.right = "";
+          btnNo.style.bottom = "";
+          foundPosition = true;
+          break;
+        }
+
+        // Lưu vị trí tốt nhất để dùng nếu không tìm được
+        bestPosition = { left: newLeft, top: newTop };
+        tries++;
+      }
+      
+      // Nếu không tìm được vị trí sau nhiều lần thử, đặt ở vị trí an toàn
+      if (!foundPosition) {
+        // Đặt ở góc trên bên phải của container, đảm bảo không đè nút Có
+        let safeLeft = Math.max(padding, Math.min(containerWidth - btnWidth - padding, containerWidth * 0.7));
+        let safeTop = Math.max(padding, Math.min(containerHeight - btnHeight - padding, containerHeight * 0.2));
+        
+        // Kiểm tra lại xem có đè nút Có không
+        if (yesRect) {
+          const safeAbsoluteLeft = containerRect.left + safeLeft;
+          const safeAbsoluteTop = containerRect.top + safeTop;
+          const safeRect = {
+            left: safeAbsoluteLeft,
+            right: safeAbsoluteLeft + btnWidth,
+            top: safeAbsoluteTop,
+            bottom: safeAbsoluteTop + btnHeight,
+          };
+          
+          const horizontalOverlap = safeRect.left < yesRect.right && safeRect.right > yesRect.left;
+          const verticalOverlap = safeRect.top < yesRect.bottom && safeRect.bottom > yesRect.top;
+          
+          if (horizontalOverlap && verticalOverlap) {
+            // Nếu vẫn đè, đặt ở góc đối diện
+            safeLeft = Math.max(padding, containerWidth * 0.1);
+            safeTop = Math.max(padding, containerHeight * 0.8);
+          }
+        }
+        
+        btnNo.style.left = Math.max(0, safeLeft) + "px";
+        btnNo.style.top = Math.max(0, safeTop) + "px";
+        btnNo.style.right = "";
+        btnNo.style.bottom = "";
+      }
+      
+      // Đảm bảo nút luôn hiển thị sau khi di chuyển - LUÔN NỔI TRÊN TẤT CẢ
+      btnNo.style.display = "block";
+      btnNo.style.visibility = "visible";
+      btnNo.style.opacity = "1";
+      btnNo.style.zIndex = "99999"; // Luôn đảm bảo z-index cao nhất
+      btnNo.style.position = "absolute";
+      btnNo.style.pointerEvents = "auto";
+    }
+
+    if (btnNo) {
+      btnNo.addEventListener("mouseenter", moveNoButton);
+      btnNo.addEventListener("click", moveNoButton);
+      // Cho vui, nếu bấm được thì vẫn chạy trốn tiếp
+    }
   </script>
 </body>
 </html>
